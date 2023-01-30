@@ -36,6 +36,12 @@ function Faq() {
                     <p>The brewery that you see on your search is one that has gone out of business
                     </p>
                 </div>
+                <div className='qaGroup'>
+                    <li className='question'>What does it mean when the type of brewery is 'planning'?</li>
+                    <p>The brewery that you see on your search isn't open to the public quite yet. However, they
+                        are in their planning stages so be sure to keep checking back to see if they have opened!
+                    </p>
+                </div>
             </ul>
             <p className='furtherQuestions'>If you didn't find the answer you were looking for here, or are 
                 having troubles with the website please email us at <strong>findabrew@yahoo.com</strong>

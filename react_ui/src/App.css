@@ -7,6 +7,8 @@
   color: black;
 }
 
+
+
 .searchTopic{
   padding: 15px;
 }
@@ -56,6 +58,8 @@ a:hover{
   padding: 30px;
   margin: 30px;
   background-color: whitesmoke;
+  overflow-y: auto;
+  height: 500px;
   
 }
 
