@@ -19,7 +19,6 @@ export default function Home() {
         setOutput(res.data[0])
         setShow(true)
         console.log(output)
-       
       }
 
 

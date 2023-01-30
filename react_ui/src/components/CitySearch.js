@@ -2,8 +2,16 @@ import React from "react";
 
 
 export default function CitySearch({data}) {
-    return(
-        <h2>{data.name}</h2>
-    )
+    if(typeof(data) == "undefined"){
+        return(
+            <h2>Invalid Search: Please try again!</h2>
+        )
+    } else{
+        return(
+            <h2>{data.name}</h2>
+        )
+
+    }
+
  
 };
