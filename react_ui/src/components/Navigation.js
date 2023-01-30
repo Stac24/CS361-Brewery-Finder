@@ -5,7 +5,7 @@ import '../App.css';
 function Navigation() {
     return (
         <nav className='navbar'>
-            <Link className='navlink' to="/"> Home </Link>
+            <Link className='navlink' to="/" exact> Home </Link>
             <Link className='navlink' to="/about"> About </Link>
             <Link className='navlink' to="/faq"> FAQ </Link>
         </nav>

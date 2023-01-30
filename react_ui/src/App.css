@@ -79,3 +79,22 @@ body{
 .image{
   width: 40%;
 }
+
+.brewObject{
+  border-bottom: 2px dotted black;
+  font-size: small;
+  font-style: italic;
+}
+
+.invalidMessage{
+  font-style: italic;
+}
+
+.brewLinks{
+  text-decoration: none;
+  color: blue;
+}
+
+a:hover{
+  color: purple
+}

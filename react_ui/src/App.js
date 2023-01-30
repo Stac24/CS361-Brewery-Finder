@@ -14,7 +14,7 @@ function App() {
       <Router>
         <Navigation />
         <div>
-            <Route path="/">
+            <Route path="/" exact>
                <Home />
             </Route>
             <Route path="/about">

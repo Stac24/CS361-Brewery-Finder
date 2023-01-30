@@ -16,7 +16,7 @@ export default function Home() {
         const res = await axios.get("https://api.openbrewerydb.org/breweries?by_city=" + input)
         // console.log(res.data)
         // console.log(input)
-        setOutput(res.data[0])
+        setOutput(res.data)
         setShow(true)
         console.log(output)
       }
@@ -25,7 +25,7 @@ export default function Home() {
     return (
         <div className='homePage'>
             <h1>Brewery Finder</h1>
-            <p>Please use the search boxes below to search for breweries based off of city, zip code, or type of brewery: </p>
+            <p>Please use the search boxes below to search for breweries based off of city or type of brewery: </p>
             <p className='examples'>Example searches are located within each input box below</p>
             <form className='allSearches'>
                 <div className='searchTopic'>
