@@ -1,7 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../App.css';
+import axios from 'axios';
+import CitySearch from '../components/CitySearch'
 
 export default function Home() {
+    const [input, setInput] = useState('');
+    const [output, setOutput] = useState();
+    const [show, setShow] = useState(false);
+
+    const handleChange = (e) =>{
+        setInput(e.target.value);
+        
+    };
+    const searchCity = async() =>{
+        const res = await axios.get("https://api.openbrewerydb.org/breweries?by_city=" + input)
+        // console.log(res.data)
+        // console.log(input)
+        setOutput(res.data[0])
+        setShow(true)
+        console.log(output)
+       
+      }
+
+
     return (
         <div className='homePage'>
             <h1>Brewery Finder</h1>
@@ -10,25 +31,24 @@ export default function Home() {
             <form className='allSearches'>
                 <div className='searchTopic'>
                     <label>Search By City: </label>
-                    <input placeholder='Portland...' />
-                    <input type="submit" value="Submit" />
-                </div>
-                <div className='searchTopic'>
-                    <label>Search By Zip: </label>
-                    <input placeholder='97035...' />
-                    <input type="submit" value="Submit" />
+                    <input onChange={handleChange} type="text" id="city" name="city" placeholder='Portland...' />
+                    <button type='button' onClick={searchCity}>Search</button>
                 </div>
                 <div className='searchTopic'>
                     <label>Search By Type*: </label>
                     <input placeholder='micro...' />
-                    <input type="submit" value="Submit" />
+                    <button>Search</button>
+                </div>
+                <div>
+                    <label>Search for a Random Brewery: </label>
+                    <button>Search</button>
                 </div>
             </form>
             <p>*See FAQ page to read more about brewery types!</p>
             <p><strong>Note:</strong> When you make a new search, your current search results will be replaced with your new search results.</p>
             <p><strong>Results:</strong></p>
             <div className='results'>
-               
+                {show ? <CitySearch data={output}/> : " "}
             </div>
 
         </div>
