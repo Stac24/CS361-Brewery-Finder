@@ -1,24 +1,35 @@
 import React, { useState } from 'react';
 import '../App.css';
 import axios from 'axios';
-import CitySearch from '../components/CitySearch'
+import SearchDisplay from '../components/SearchDisplay'
 
 export default function Home() {
-    const [input, setInput] = useState('');
+    const [city, setCity] = useState('');
+    const [type, setType] = useState('');
     const [output, setOutput] = useState();
     const [show, setShow] = useState(false);
 
-    const handleChange = (e) =>{
-        setInput(e.target.value);
+    const changeCity = (e) =>{
+        setCity(e.target.value.toLowerCase());
         
     };
+
+    const changeType = (e) =>{
+        setType(e.target.value.toLowerCase());
+    }
+
     const searchCity = async() =>{
-        const res = await axios.get("https://api.openbrewerydb.org/breweries?by_city=" + input)
+        const res = await axios.get("https://api.openbrewerydb.org/breweries?by_city=" + city)
         // console.log(res.data)
         // console.log(input)
         setOutput(res.data)
         setShow(true)
-        console.log(output)
+      }
+
+    const searchType = async() =>{
+        const res = await axios.get("https://api.openbrewerydb.org/breweries?by_type=" + type)
+        setOutput(res.data)
+        setShow(true)
       }
 
 
@@ -31,13 +42,13 @@ export default function Home() {
             <form className='allSearches'>
                 <div className='searchTopic'>
                     <label>Search By City: </label>
-                    <input onChange={handleChange} type="text" id="city" name="city" placeholder='Portland...' />
+                    <input onChange={changeCity} type="text" id="city" name="city" placeholder='Portland...' />
                     <button type='button' onClick={searchCity}>Search</button>
                 </div>
                 <div className='searchTopic'>
                     <label>Search By Type*: </label>
-                    <input placeholder='Micro...' />
-                    <button>Search</button>
+                    <input onChange={changeType} placeholder='Micro...' />
+                    <button type='button' onClick={searchType}>Search</button>
                 </div>
                 <div>
                     <label>Search for a Random Brewery: </label>
@@ -46,7 +57,7 @@ export default function Home() {
             </form>
             <p><strong>Results</strong></p>
             <div className='results'>
-                {show ? <CitySearch data={output}/> : " "}
+                {show ? <SearchDisplay data={output}/> : " "}
             </div>
             <p><strong>Note:</strong> When you make a new search, your current search results will be replaced with your new search results.</p>
             <p>*See FAQ page to read more about brewery types!</p>

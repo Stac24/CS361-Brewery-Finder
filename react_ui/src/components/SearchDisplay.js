@@ -2,10 +2,10 @@ import React from "react";
 import '../App.css';
 
 
-export default function CitySearch({data}) {
+export default function SearchDisplay({data}) {
     if(data.length == 0){
         return(
-            <h2 className="invalidMessage">Invalid Search: Please try again!</h2>
+            <h2 className="invalidMessage">No breweries found!</h2>
         )
     } else{
         return(
