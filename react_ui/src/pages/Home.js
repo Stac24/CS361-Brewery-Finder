@@ -25,7 +25,8 @@ export default function Home() {
     return (
         <div className='homePage'>
             <h1>Brewery Finder</h1>
-            <p>Please use the search boxes below to search for breweries based off of city or type of brewery: </p>
+            <p>Please use the search boxes below to search for breweries based off of city or type of brewery </p>
+            <p>If you'd rather see a random brewery, please click the search button located next to "Search for a Random Brewery"</p>
             <p className='examples'>Example searches are located within each input box below</p>
             <form className='allSearches'>
                 <div className='searchTopic'>
@@ -35,7 +36,7 @@ export default function Home() {
                 </div>
                 <div className='searchTopic'>
                     <label>Search By Type*: </label>
-                    <input placeholder='micro...' />
+                    <input placeholder='Micro...' />
                     <button>Search</button>
                 </div>
                 <div>
@@ -43,12 +44,12 @@ export default function Home() {
                     <button>Search</button>
                 </div>
             </form>
-            <p>*See FAQ page to read more about brewery types!</p>
-            <p><strong>Note:</strong> When you make a new search, your current search results will be replaced with your new search results.</p>
-            <p><strong>Results:</strong></p>
+            <p><strong>Results</strong></p>
             <div className='results'>
                 {show ? <CitySearch data={output}/> : " "}
             </div>
+            <p><strong>Note:</strong> When you make a new search, your current search results will be replaced with your new search results.</p>
+            <p>*See FAQ page to read more about brewery types!</p>
 
         </div>
     )
