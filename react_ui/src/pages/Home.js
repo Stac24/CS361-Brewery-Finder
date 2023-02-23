@@ -2,12 +2,16 @@ import React, { useState } from 'react';
 import '../App.css';
 import axios from 'axios';
 import SearchDisplay from '../components/SearchDisplay'
+//const { io } = require("socket.io-client");
+import { io } from 'https://cdn.socket.io/4.3.2/socket.io.esm.min.js';
+
 
 export default function Home() {
     const [city, setCity] = useState('');
     const [type, setType] = useState('');
     const [output, setOutput] = useState();
     const [show, setShow] = useState(false);
+
 
     const changeCity = (e) =>{
         setCity(e.target.value.toLowerCase());
@@ -32,6 +36,24 @@ export default function Home() {
         setShow(true)
       }
 
+    const getRandom = () =>{
+        const socket = io("http://localhost:44441");
+        socket.on("getRandBrewery", (breweryInfo) => {
+            setOutput(breweryInfo)
+            setShow(true)
+        });
+
+    }
+
+    // const randClicked = () =>{
+    //     socket.emit('randBrew');
+    //     socket.on("getRandBrewery", (breweryInfo) => {
+    //         setOutput(breweryInfo)
+    //         setShow(true)
+    //     });
+    // }
+    
+    
 
     return (
         <div className='homePage'>
@@ -52,7 +74,7 @@ export default function Home() {
                 </div>
                 <div>
                     <label>Search for a Random Brewery: </label>
-                    <button>Search</button>
+                    <button type='button' onClick={getRandom}>Search</button>
                 </div>
             </form>
             <p><strong>Results</strong></p>
